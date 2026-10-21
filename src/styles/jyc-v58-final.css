@@ -80,3 +80,68 @@ html[data-theme="dark"] .public-app .jh-final{background:#8F2020!important;color
 @media(max-width:700px){:root{--jyc-content:min(100% - 32px,1360px);--jyc-content-narrow:min(100% - 32px,1180px)}.public-app :where(.section,.page,.feature-page,.unified-public-page){padding-block:70px!important}.public-app :where(.section-head,.reference-section-head,.compact-page-head,.latest-update-head,.hub-directory-head,.gallery-page-head){display:block!important}.public-app :where(.section-head h1,.section-head h2,.reference-section-head h2,.compact-page-head h1,.compact-page-head h2,.feature-hero h1,.gallery-page h1,.events-page h1,.team-page h1,.about-page h1,.contact-page h1){font-size:clamp(42px,13vw,64px)!important}.public-app .feature-grid,.public-app .club-grid,.public-app .reference-event-grid,.public-app .activity-grid,.public-app .team-layer-grid,.public-app .event-related-grid,.public-app .archive-club-grid,.public-app .latest-update-grid{grid-template-columns:1fr!important}.public-app .gallery-grid{column-count:2!important}.footer-v6-main{grid-template-columns:1fr!important;padding:56px 0!important;gap:42px!important}.footer-v6-intro h2{font-size:clamp(46px,14vw,68px)!important}.footer-bottom{padding-bottom:110px!important}}
 @media(max-width:430px){:root{--jyc-content:min(100% - 24px,1360px);--jyc-content-narrow:min(100% - 24px,1180px)}.nav-inner{width:calc(100% - 24px)!important}.nav .brand-mark{width:38px!important;height:38px!important}.nav{height:64px!important}.nav nav{inset:64px 0 auto 0!important}.mobile-nav-scrim{inset:64px 0 0!important}}
 @media(prefers-reduced-motion:reduce){.public-app :where(.card,.club-card,.event-card,.feature-card,.activity-card,.home-team-card):hover{transform:none!important}.jh-btn:hover{transform:none!important}.public-app .gallery-grid .gallery-item:hover img,.public-app .club-card:hover .club-card-visual img,.public-app .event-card:hover img{transform:none!important}}
+
+
+/* JYC release repair layer — 2026-10
+   Targeted overrides for verified dark-theme contrast and narrow-screen geometry.
+   Keep these rules here until the CSS generations are consolidated with visual baselines. */
+html[data-theme="dark"] .jyc-home {
+  --jh-bg: #0f0e11 !important;
+  --jh-surface: #18161d !important;
+  --jh-surface-elevated: #211e26 !important;
+  --jh-ink: #fff8e1 !important;
+  --jh-muted: #c5bfcc !important;
+  --jh-accent: #f06a64 !important;
+  --jh-cyan: #f06a64 !important;
+}
+html[data-theme="dark"] .jyc-home .jh-hero {
+  background-color: #0f0e11 !important;
+  color: #fff8e1 !important;
+}
+html[data-theme="dark"] .jyc-home .jh-hero h1,
+html[data-theme="dark"] .jyc-home .jh-hero h1 span,
+html[data-theme="dark"] .jyc-home .jh-hero h1 em,
+html[data-theme="dark"] .jyc-home .jh-hero .jh-title-gradient {
+  color: #fff8e1 !important;
+  -webkit-text-fill-color: #fff8e1 !important;
+  background: none !important;
+  text-shadow: none !important;
+}
+html[data-theme="dark"] .jyc-home .jh-lead,
+html[data-theme="dark"] .jyc-home .jh-overline {
+  color: #d1cad7 !important;
+}
+@media (max-width: 680px) {
+  .jyc-home .jh-hero {
+    min-height: auto !important;
+    padding-top: 28px !important;
+    padding-bottom: 24px !important;
+  }
+  .jyc-home .jh-hero-webgl-stage-wrap {
+    max-height: min(25vh, 210px) !important;
+    overflow: hidden !important;
+  }
+  .jyc-home .jh-hero-actions {
+    margin-top: 14px !important;
+    margin-bottom: 16px !important;
+    gap: 10px !important;
+  }
+  .public-app button:not(.jyc57-photo):not(.jyc57-feature-card),
+  .public-app .btn,
+  .public-app .filter-toggle,
+  .public-app .nav button {
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+}
+@media (min-width: 681px) and (max-width: 900px) {
+  .events-page .compact-page-head h1 {
+    max-width: 100% !important;
+    font-size: clamp(34px, 5.4vw, 46px) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -0.04em !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+}
