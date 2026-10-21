@@ -278,3 +278,53 @@ html[data-theme="dark"] .jyc-editorial-home.jyc-home .jh-overline {
     word-break: normal !important;
   }
 }
+
+
+/* Shared editorial polish: warm paper surfaces, quiet depth, consistent focus. */
+html[data-theme="light"] {
+  --jyc-bg: #f5f1e6;
+  --jyc-surface: #fffdf8;
+  --jyc-surface-2: #f0eadf;
+  --jyc-ink: #1a191d;
+  --jyc-muted: #5f5963;
+  --jyc-line: rgba(26, 25, 29, 0.13);
+  --jyc-line-strong: rgba(26, 25, 29, 0.22);
+  --jyc-red: #a82420;
+  --jyc-red-strong: #8f1d1a;
+  --jyc-gold: #bf9c6f;
+}
+html[data-theme="light"] body,
+html[data-theme="light"] body:has(.public-app) {
+  background: #f5f1e6 !important;
+  color: #1a191d !important;
+}
+html[data-theme="light"] .public-app {
+  --bg-main: #f5f1e6 !important;
+  --bg-card: #fffdf8 !important;
+  --text-primary: #1a191d !important;
+  --text-muted: #5f5963 !important;
+}
+.public-app :is(.club-card, .event-card, .achievement-card, .team-card, .gallery-card, .hub-card, .feature-card, .update-card) {
+  border-color: var(--jyc-line) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 6px 24px rgba(18, 20, 28, 0.045) !important;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease !important;
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .public-app :is(.club-card, .event-card, .achievement-card, .team-card, .gallery-card, .hub-card, .feature-card, .update-card):hover {
+    border-color: rgba(168, 36, 32, 0.35) !important;
+    box-shadow: 0 12px 32px rgba(18, 20, 28, 0.09) !important;
+    transform: translateY(-2px);
+  }
+}
+.public-app :is(button, .btn, a.button, .button, [role="button"]):focus-visible,
+.mobile-dock :is(button, a):focus-visible {
+  outline: 3px solid #bf9c6f !important;
+  outline-offset: 3px !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .public-app :is(.club-card, .event-card, .achievement-card, .team-card, .gallery-card, .hub-card, .feature-card, .update-card) {
+    transition: none !important;
+    transform: none !important;
+  }
+}
