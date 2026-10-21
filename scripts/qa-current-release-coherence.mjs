@@ -39,6 +39,7 @@ add('gallery album cards route to published collections and expose real photo me
 add('homepage photo stories use only published event/club photo records',home.includes("item?.mediaKind !== 'photo'")&&home.includes("!['event','club'].includes(role)")&&home.includes('item?.published === false'));
 add('homepage event links use the stored canonical slug used by event details and sitemap',home.includes('const eventPath = e =>')&&home.includes('/events/${slug(e?.slug||e?.title)}'));
 add('event card, archive, calendar and announcements links prefer canonical stored slugs',main.includes("href:'/events/'+slug(e.slug||e.title)")&&main.includes('encodeURIComponent(slug(e.slug||e.title))')&&main.includes("onClick={()=>nav('/events/'+slug(e.slug||e.title))"));
+add('event directory rows prefer stored canonical slugs over title-derived slugs',main.includes("onClick={()=>nav('/events/'+slug(event.slug||event.title))"));
 add('gallery uses deterministic grid contract',publicCss.includes('.public-app .gallery-grid{')&&publicCss.includes('display:grid!important')&&publicCss.includes('column-count:unset!important')&&publicCss.includes('aspect-ratio:4/3!important'));
 add('gallery archive uses deterministic rows',publicCss.includes('.public-app .jyc57-masonry')&&publicCss.includes('grid-auto-rows:auto!important')&&publicCss.includes('.public-app .jyc57-masonry .jyc57-photo'));
 add('gallery has mobile layout contracts',publicCss.includes('@media(max-width:620px)')&&publicCss.includes('.public-app .gallery-grid'));
