@@ -58,7 +58,7 @@ add('RPC payloads are not persisted in browser storage',/export function writeSi
 add('Session identifier generation never falls back to Math.random',/const uid=\(\)=>\{const cryptoApi=globalThis\.crypto;[\s\S]{0,350}cryptoApi\.getRandomValues\(bytes\)/.test(read(path.join(root,'src/main.jsx')))&&! /Math\.random\(\)/.test(read(path.join(root,'src/main.jsx'))));
 add('Session identifiers use Web Crypto with no insecure random fallback',/const uid=\(\)=>\{const cryptoApi=globalThis\.crypto;[\s\S]{0,350}cryptoApi\.getRandomValues\(bytes\)/.test(read(path.join(root,'src/main.jsx')))&&! /Math\.random\(\)/.test(read(path.join(root,'src/main.jsx'))));
 add('Pageview local storage rejects malformed shapes and invalid counters',/const parsed=JSON\.parse\(storageGet\(key,'\{\}'\)\);[\s\S]{0,650}!Array\.isArray\(parsed\)[\s\S]{0,250}Number\.isSafeInteger\(count\)/.test(read(path.join(root,'src/main.jsx'))));
-add('Featured-event dismissal storage writes only a safe integer timestamp',/const expiry=Date\.now\(\)\+FEATURED_EVENT_DISMISS_MS;[\s\S]{0,160}Number\.isSafeInteger\(expiry\)/.test(read(path.join(root,'src/featured-event-popup.jsx'))));
+add('Featured-event announcement is intentionally disabled and cannot render an overlay',/export function FeaturedEventPopup\(\)\s*\{\s*return null;\s*\}/.test(read(path.join(root,'src/featured-event-popup.jsx'))) && !/FEATURED_EVENT_DISMISS_MS|jyc-featured-event-overlay/.test(read(path.join(root,'src/featured-event-popup.jsx'))));
 const updatesApi=read(path.join(root,'api/jyc-updates.js'));
 const recordGuardMatch=updatesApi.match(/const isRecord=(value=>[^;]+);/);
 let recordGuard;
