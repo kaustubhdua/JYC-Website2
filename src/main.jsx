@@ -795,7 +795,7 @@ function Navbar({data,admin,theme,setTheme}){
    <nav className={open?'open':''}>{navButtons}<button type="button" className={`nav-more-trigger ${moreOpen?'active':''}`} onClick={()=>{setOpen(false);setMoreOpen(v=>!v)}} aria-expanded={moreOpen}>More <span aria-hidden="true">⌄</span></button></nav>
    <button type="button" className="nav-join-cta" onClick={()=>nav('/join-jyc')}>Join JYC <span>↗</span></button>
    <Theme theme={theme} setTheme={setTheme}/><button type="button" className={`hamb ${open?'open':''}`} onClick={()=>setOpen(v=>!v)} aria-label="Menu" aria-expanded={open}><i/><i/><i/></button>
-   {open&&<button type="button" className="mobile-nav-scrim" aria-label="Close navigation" onClick={()=>setOpen(false)}/>}<button type="button" className="search-trigger" aria-label="Search" onClick={()=>setSearch(true)} title="Search JYC (Ctrl/Cmd + K)"><span className="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5"/></svg></span><span className="search-label">Search</span><kbd aria-hidden="true">Ctrl K</kbd></button>
+   {open&&<button type="button" className="mobile-nav-scrim" aria-label="Close navigation" onClick={()=>setOpen(false)}/>}<button type="button" className="search-trigger" aria-label="Search Ctrl K" onClick={()=>setSearch(true)} title="Search JYC (Ctrl/Cmd + K)"><span className="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5"/></svg></span><span className="search-label">Search</span><kbd aria-hidden="true">Ctrl K</kbd></button>
  </div></header>
  {createPortal(dock,document.body)}{createPortal(more,document.body)}{searchView}</>
 }
