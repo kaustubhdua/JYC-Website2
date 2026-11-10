@@ -72,7 +72,7 @@ const processFile=async file=>{
     generated++;
    }
   }
- }catch(error){failed++;console.warn('Derivative failed:',rel,error?.message||error)}
+ }catch(error){const optionalBrandAsset=rel.startsWith('logos/')||rel.startsWith('banners/');if(optionalBrandAsset)skipped++;else failed++;console.warn(optionalBrandAsset?'Derivative skipped; original asset remains available:':'Derivative failed:',rel,error?.message||error)}
  finally{
   completed++;
   if(completed%25===0||completed===sourceFiles.length)console.log('Photo derivatives: '+completed+'/'+sourceFiles.length+' files processed');
