@@ -108,6 +108,7 @@ import './styles/jyc-theme-contract.css';
 import './styles/jyc-atmosphere.css';
 import './styles/jyc-celestial-refresh.css';
 import './styles/jyc-v67-visual-polish.css';
+import './styles/jyc-about-contact-team-finish.css';
 
 const logo='/assets/jyc-logo.avif';
 const logoTiny='/assets/jyc-logo-48.avif';
@@ -497,7 +498,7 @@ function Contact({data}){
    setSent(true);
  }catch(err){
    console.warn('JYC contact submission unavailable:',err);
-   setSubmitError('The live contact inbox is not configured yet. Please use Instagram or WhatsApp below.');
+   setSubmitError('We could not send your message right now. Please try again or use one of the official JYC channels above.');
  }finally{setSending(false)}};
  return <section className="section page contact-page">
   <Back label="Back to home" to="/"/>
@@ -533,7 +534,7 @@ function Contact({data}){
     <div style={{display:'flex',flexDirection:'column',gap:'12px',marginTop:'12px'}}>
      {CREATORS.map(c=>(
       <div key={c.name}>
-       <strong style={{color:'var(--gold,#bf9c6f)'}}>{c.name}</strong> · <span style={{fontSize:'12px',opacity:.8}}>{c.role}</span>
+       <strong style={{color:'var(--gold,#bf9c6f)'}}>{c.name==='Kaustubh Dua'?<a className="contact-creator-portfolio" href="https://kaustubhdua.vercel.app/" target="_blank" rel="noopener noreferrer">Kaustubh Dua <span aria-hidden="true">↗</span></a>:c.name}</strong> · <span style={{fontSize:'12px',opacity:.8}}>{c.role}</span>
        <div className="social-row" style={{marginTop:'6px'}}>
         {c.linkedin&&<a href={c.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>}
         {c.github&&<a href={c.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>}
@@ -562,9 +563,9 @@ function Contact({data}){
      <p>Your message has been received. JYC channels are also available above if you need a faster response.</p>
      <button type="button" className="btn" onClick={()=>{setSent(false);setForm({name:'',email:'',message:''});setFieldErrors({});setSubmitError('')}}>Send another message</button>
     </div>:<form className="contact-form" onSubmit={submit} noValidate>
-     <label><span>Name</span><input name="name" value={form.name} onChange={e=>updateContactField('name',e.target.value)} placeholder="Your full name" required autoComplete="name" aria-invalid={fieldErrors.name?'true':undefined} aria-describedby={fieldErrors.name?'contact-name-error':undefined}/>{fieldErrors.name&&<span id="contact-name-error" className="contact-field-error" aria-live="polite">{fieldErrors.name}</span>}</label>
-     <label><span>Email</span><input name="email" type="email" value={form.email} onChange={e=>updateContactField('email',e.target.value)} placeholder="you@email.com" required autoComplete="email" aria-invalid={fieldErrors.email?'true':undefined} aria-describedby={fieldErrors.email?'contact-email-error':undefined}/>{fieldErrors.email&&<span id="contact-email-error" className="contact-field-error" aria-live="polite">{fieldErrors.email}</span>}</label>
-     <label><span>Message</span><textarea name="message" rows="5" value={form.message} onChange={e=>updateContactField('message',e.target.value)} placeholder="How can JYC help you?" required aria-invalid={fieldErrors.message?'true':undefined} aria-describedby={fieldErrors.message?'contact-message-error':undefined}/>{fieldErrors.message&&<span id="contact-message-error" className="contact-field-error" aria-live="polite">{fieldErrors.message}</span>}</label>
+     <label><span>Name</span><input name="name" maxLength={80} value={form.name} onChange={e=>updateContactField('name',e.target.value)} placeholder="Your full name" required autoComplete="name" aria-invalid={fieldErrors.name?'true':undefined} aria-describedby={fieldErrors.name?'contact-name-error':undefined}/>{fieldErrors.name&&<span id="contact-name-error" className="contact-field-error" aria-live="polite">{fieldErrors.name}</span>}</label>
+     <label><span>Email</span><input name="email" type="email" maxLength={254} value={form.email} onChange={e=>updateContactField('email',e.target.value)} placeholder="you@email.com" required autoComplete="email" aria-invalid={fieldErrors.email?'true':undefined} aria-describedby={fieldErrors.email?'contact-email-error':undefined}/>{fieldErrors.email&&<span id="contact-email-error" className="contact-field-error" aria-live="polite">{fieldErrors.email}</span>}</label>
+     <label><span>Message</span><textarea name="message" rows="5" maxLength={2000} value={form.message} onChange={e=>updateContactField('message',e.target.value)} placeholder="How can JYC help you?" required aria-invalid={fieldErrors.message?'true':undefined} aria-describedby={fieldErrors.message?'contact-message-error':undefined}/>{fieldErrors.message&&<span id="contact-message-error" className="contact-field-error" aria-live="polite">{fieldErrors.message}</span>}<span className="contact-message-count" aria-live="polite">{form.message.length}/2000 characters</span></label>
      {submitError&&<p className="contact-form-error" role="alert">{submitError}</p>}
      <button className="btn primary" type="submit" disabled={sending}>{sending?'Sending…':'Send message →'}</button>
     </form>}
